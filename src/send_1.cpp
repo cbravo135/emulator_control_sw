@@ -9,10 +9,12 @@ using namespace std;
 
 int main(int argc,char *argv[])
 {
-	eth_open("/dev/schar4");
+	eth_open("/dev/schar3");
 	eth_reset();
 
-	int e = write_command(1);
+    int addr = atoi(argv[1]);
+
+	int e = write_command(1,addr);
 	cout << "write command 1 status = " << e << endl;
 
 	char* pkt;

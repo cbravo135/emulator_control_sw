@@ -19,8 +19,8 @@ int write_command(int num, int adr, char* block){
   case 1: // pack Sbits into clusters 
     command[0]=0xf1;
     command[1]=0xf1;
-    command[2]=0x00;
-    command[3]=0x00;
+    command[2]=adr&0x00ff;
+    command[3]=(adr&0xff00)>>8;
     break;
   case 2:
     command[0]=0xf2;

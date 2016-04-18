@@ -13,7 +13,7 @@ int main(int argc,char *argv[])
 	cout << "pageid = " << pageid << endl;
 
 	// open device
-	eth_open("/dev/schar4");
+	eth_open("/dev/schar3");
 	eth_reset();
 
 	int q = write_command(3, pageid);
@@ -25,13 +25,14 @@ int main(int argc,char *argv[])
 
 	char block_back[RAMPAGE_SIZE];
 	//char hdr[4];
-	memcpy(block_back, (const void*)&pkt[4], RAMPAGE_SIZE);
+    memcpy(block_back, (const void*)&pkt[4], RAMPAGE_SIZE);
 
- 	//cout << "block_back = " << std::hex << block_back[0] << endl;
- 	//cout << "block_back = " << block_back << endl;
-        dumphex(RAMPAGE_SIZE,block_back);
-	// close device
-	eth_close();
-  
-  	return q;
+    //cout << "block_back = " << std::hex << block_back[0] << endl;
+    //cout << "block_back = " << block_back << endl;
+    dumphex(RAMPAGE_SIZE,block_back);
+    cout << endl;
+    // close device
+    eth_close();
+
+    return q;
 }
