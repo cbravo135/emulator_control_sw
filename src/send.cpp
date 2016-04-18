@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include "eth_lib.h"
+#include "eth_adr.h"
 #include "utils.h"
 #include "commands.h"
 
@@ -22,7 +23,7 @@ int main(int argc,char *argv[])
 	//nwdat = 4+RAMPAGE_SIZE;
 
 	// open device
-	eth_open("/dev/schar3");
+	eth_open(ETHADR);
 	eth_reset();
 
 	int e = write_command(7,pageid, block);
